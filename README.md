@@ -1,11 +1,7 @@
 DtcGridBundle
 ==============
 
-[![Build Status](https://travis-ci.org/mmucklo/DtcGridBundle.svg?branch=master)](https://travis-ci.org/mmucklo/DtcGridBundle)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mmucklo/DtcGridBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mmucklo/DtcGridBundle/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/mmucklo/DtcGridBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mmucklo/DtcGridBundle/?branch=master)
-
-Generate a searchable Grid from a Doctrine ORM Entity or Doctrine MongoDB Document
+Generate a searchable Grid from a Doctrine ORM Entity
 
   * Utilize jQuery [DataTables](https://datatables.net), [jqGrid](http://www.trirand.com/blog/)(\*), or a Styled HTML Table(\*)
   * Easily styled using Bootstrap
@@ -45,35 +41,12 @@ You may see something like this (please answer 'y' to the question if prompted):
   - Configuring mmucklo/grid-bundle (>=5.0): From github.com/symfony/recipes-contrib:master
 ```
 
-### Symfony 2/3
-    
-Add this to your AppKernel.php file:
-
-```php
-    public function registerBundles()
-    {
-        $bundles = [
-            ...
-            new \Dtc\GridBundle\DtcGridBundle(),
-            ...
-        ]
-```
-
-Add this to your app/config/routing.yml file:
-
-```yaml
-dtc_grid:
-    resource: '@DtcGridBundle/Resources/config/routing.yml'
-```
-
 Usage
 -----
 
 ### Get Started
 
 After installation, all entities and documents that have a Grid annotation should be available off the dtc_grid route:
-
-(NOTE: symfony5 example below, for symfony2/3, the namespace for the class may be different - e.g. AppBundle instead of App)
 
 There are two recommended ways to setup a grid for a page, through Annotations, or through Reflection
 
@@ -100,7 +73,6 @@ You can place the grid column definitions in a custom yaml file:
 ```yaml
 # File location(s):
 #   - symfony 4+: config/dtc_grid/*.yaml (will load all *.yaml files in this directory)
-#   - symfony 2/3: src/*/*/Resources/config/dtc_grid.yaml (will only load files with this name or the name 'dtc_grid.yml')
 #   - custom (bundles): add the following to a CompilerPass:
 #        # $cacheDir = $container->getParameter('kernel.cache_dir');
 #        \Dtc\GridBundle\Grid\Source\ColumnSource::cacheClassesFromFile($cacheDir, $filename);
