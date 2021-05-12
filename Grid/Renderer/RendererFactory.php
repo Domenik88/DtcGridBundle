@@ -2,14 +2,16 @@
 
 namespace Dtc\GridBundle\Grid\Renderer;
 
+use Psr\Container\ContainerInterface;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 
 class RendererFactory
 {
-    protected $twig;
-    protected $router;
-    protected $translator;
+    protected Environment $twig;
+    protected RouterInterface $router;
+    protected TranslatorInterface $translator;
     protected $themeCss;
     protected $themeJs;
     protected $pageDivStyle;
@@ -30,28 +32,28 @@ class RendererFactory
 
     public function __construct(
         RouterInterface $router,
-        $translator,
-        array $config
+        TranslatorInterface $translator,
+        ContainerInterface $container
     ) {
         $this->router = $router;
         $this->translator = $translator;
-        $this->themeCss = $config['theme.css'];
-        $this->themeJs = $config['theme.js'];
-        $this->pageDivStyle = $config['page_div_style'];
-        $this->jQuery = $config['jquery'];
-        $this->purl = $config['purl'];
-        $this->dataTablesCss = $config['datatables.css'];
-        $this->dataTablesJs = $config['datatables.js'];
-        $this->dataTablesLocalCss = $config['datatables.local.css'];
-        $this->dataTablesLocalJs = $config['datatables.local.js'];
-        $this->dataTablesClass = $config['datatables.class'];
-        $this->dataTablesOptions = $config['datatables.options'];
-        $this->jqGridCss = $config['jq_grid.css'];
-        $this->jqGridJs = $config['jq_grid.js'];
-        $this->jqGridLocalCss = $config['jq_grid.local.css'];
-        $this->jqGridLocalJs = $config['jq_grid.local.js'];
-        $this->jqGridOptions = $config['jq_grid.options'];
-        $this->tableOptions = $config['table.options'];
+        $this->themeCss = $container->getParameter('dtc_grid.theme.css');
+        $this->themeJs = $container->getParameter('dtc_grid.theme.js');
+        $this->pageDivStyle = $container->getParameter('dtc_grid.page_div_style');
+        $this->jQuery = $container->getParameter('dtc_grid.jquery');
+        $this->purl = $container->getParameter('dtc_grid.purl');
+        $this->dataTablesCss = $container->getParameter('dtc_grid.datatables.css');
+        $this->dataTablesJs = $container->getParameter('dtc_grid.datatables.js');
+        $this->dataTablesLocalCss = $container->getParameter('dtc_grid.datatables.local.css');
+        $this->dataTablesLocalJs = $container->getParameter('dtc_grid.datatables.local.js');
+        $this->dataTablesClass = $container->getParameter('dtc_grid.datatables.class');
+        $this->dataTablesOptions = $container->getParameter('dtc_grid.datatables.options');
+        $this->jqGridCss = $container->getParameter('dtc_grid.jq_grid.css');
+        $this->jqGridJs = $container->getParameter('dtc_grid.jq_grid.js');
+        $this->jqGridLocalCss = $container->getParameter('dtc_grid.jq_grid.local.css');
+        $this->jqGridLocalJs = $container->getParameter('dtc_grid.jq_grid.local.js');
+        $this->jqGridOptions = $container->getParameter('dtc_grid.jq_grid.options');
+        $this->tableOptions = $container->getParameter('dtc_grid.table_options');
     }
 
     public function setTwigEnvironment(Environment $twig)

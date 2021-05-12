@@ -5,24 +5,7 @@ services:
         arguments:
             - "@router"
             - "@translator"
-            -
-                theme.css: '%dtc_grid.theme.css%'
-                theme.js: '%dtc_grid.theme.js%'
-                page_div_style: '%dtc_grid.page_div_style%'
-                jquery: '%dtc_grid.jquery%'
-                purl: '%dtc_grid.purl%'
-                table.options: '%dtc_grid.table_options%'
-                jq_grid.css: '%dtc_grid.jq_grid.css%'
-                jq_grid.js: '%dtc_grid.jq_grid.js%'
-                jq_grid.local.css: '%dtc_grid.jq_grid.local.css%'
-                jq_grid.local.js: '%dtc_grid.jq_grid.local.js%'
-                jq_grid.options: '%dtc_grid.jq_grid.options%'
-                datatables.css: '%dtc_grid.datatables.css%'
-                datatables.js: '%dtc_grid.datatables.js%'
-                datatables.local.css: '%dtc_grid.datatables.local.css%'
-                datatables.local.js: '%dtc_grid.datatables.local.js%'
-                datatables.class: '%dtc_grid.datatables.class%'
-                datatables.options: '%dtc_grid.datatables.options%'
+            - "@service_container"
     dtc_grid.command.source_list:
         public: true
         class: Dtc\GridBundle\Command\SourceListCommand
